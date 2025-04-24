@@ -64,14 +64,6 @@ def plot_box_plots_distances_threshold(results):
             distances.append(values[1])
 
         distances_per_th.append(distances)
-        print(
-            "Threshold: ",
-            threshold,
-            "mean: ",
-            np.mean(distances),
-            "std: ",
-            np.std(distances),
-        )
 
     plt.figure(figsize=(10, 6))
     plt.boxplot(
@@ -79,7 +71,7 @@ def plot_box_plots_distances_threshold(results):
         labels=[f"Threshold = {th}" for th in results.keys()],
         showmeans=True,
     )
-    plt.title("Distance of Matches for Different Patch Sizes")
+    plt.title("Distance of Matches for Different Thresholds")
     plt.xlabel("Patch Size")
     plt.ylabel("Distance")
     plt.grid(True)
@@ -95,7 +87,6 @@ def plot_box_plots_distances_top_n(results):
         for pair in value:
             dist.append(pair[1][1])
         distances.append(dist)
-        print("n: ", len, "mean: ", np.mean(dist), "std: ", np.std(dist))
 
     plt.figure(figsize=(10, 6))
     plt.boxplot(distances, labels=[f"n = {n}" for n in results.keys()], showmeans=True)

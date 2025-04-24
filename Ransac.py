@@ -89,7 +89,7 @@ class Ransac:
 
         return mutual_matches
 
-    def ransac_translation(
+    def ransac_transf(
         self,
         kpts_src,
         kpts_dst,
@@ -285,7 +285,7 @@ def plot_matches_inliers_outliers(
     offset = image_dest.shape[1]
     kpts_src = add_offset(kpts_src, offset)
     combined_img = np.hstack((image_dest, image_src))
-    ax.imshow(combined_img)
+    ax.imshow(combined_img, cmap="gray")
     ax.axis("off")
     (inlier_line,) = ax.plot([], [], "go", markersize=5)
     (outlier_line,) = ax.plot([], [], "ro", markersize=5)
@@ -385,7 +385,7 @@ def visualize_matches(kpts_l, kpts_r, matches, left_img, right_img, threshold):
     kpts_r = add_offset(kpts_r, offset)
 
     fig, ax = plt.subplots(figsize=(15, 8))
-    ax.imshow(combined_img)
+    ax.imshow(combined_img, cmap="gray")
     ax.axis("off")
 
     for j, (i, dist) in matches.items():

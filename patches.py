@@ -71,3 +71,20 @@ def extract_patch(image, keypoint, patch_size=16):
         )
 
     return patch
+
+
+def show_patches_with_keypoints(patches, patch_size, indices, num_show=5):
+    half_size = patch_size // 2
+    plt.figure(figsize=(12, 3))
+
+    # indices = random.sample(range(len(patches)), min(num_show, len(patches)))
+
+    for i, idx in enumerate(indices):
+        patch = patches[idx]
+        plt.subplot(1, num_show, i + 1)
+        plt.imshow(patch, cmap="gray")
+        plt.scatter(half_size, half_size, c="r", s=20)
+        plt.axis("off")
+
+    plt.tight_layout()
+    plt.show()

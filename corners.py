@@ -1,7 +1,7 @@
 from skimage.feature import corner_harris, corner_peaks
 import numpy as np
 import cv2
-
+import matplotlib.pyplot as plt
 
 Sx = np.array([[1, 0, -1], [2, 0, -2], [1, 0, -1]])
 
